@@ -1,0 +1,6 @@
+content_filter: true
+fuzzy_trigger: true
+ignore_viewer_pokecatch: true
+llm_brain: true
+pcg_auto_catch: false
+timers: true

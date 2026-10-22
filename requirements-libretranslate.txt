@@ -1,0 +1,5 @@
+# Install only in LibreTranslate's separate environment (.libretranslate/.venv).
+# LibreTranslate pins requests==2.31.0, which conflicts with the app requirement.
+libretranslate==1.9.6
+# LibreTranslate's Requests 2.31 warns with newer chardet pulled by Argos files.
+chardet==5.2.0

@@ -1,0 +1,3 @@
+tools:
+  twitch.reply: { enabled: true, cooldown_s: 0 }
+  screen.capture: { enabled: false, max_fps: 2 }

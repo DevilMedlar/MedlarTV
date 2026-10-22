@@ -1,0 +1,1085 @@
+Twitch scope guide for DevilMedlar and MedlarTV
+Checked October 4, 2026
+
+What this file covers
+
+The supplied diagnostic report lists 99 distinct scope names for DevilMedlar
+and the same 99 for MedlarTV. The main inventory below contains each name
+once: 80 current API/chat permissions, 1 current sign-in permission, and
+18 historical permissions still present in the reported grants. Both accounts
+have every main-inventory entry in that report. No scopes were added to or
+removed from either account while making this guide.
+
+The old scopes file had 74 entries. It missed 27 names from the reported
+grants and included 2 names that were not in either reported grant. Those
+2 old names are preserved in a separate appendix, outside the 99-entry
+inventory. This is a readable permission guide, not a paste-ready list of
+permissions an app should request.
+
+A scope is a permission slip
+
+Imagine the app is a helper and Twitch has many locked doors. A scope is a
+permission slip for one kind of door. A token is the credential the helper
+shows Twitch. Having the slip does not mean the helper has used the door,
+that the code works, or that every action is available to the account.
+
+READ means look. CHANGE means change something. SEND means publish a message.
+READ EVENTS means Twitch tells the app when something happens; it does not
+necessarily mean the app can look back through all old events. An API is a
+set of actions a program can ask Twitch to do. An endpoint is one specific
+action. EventSub is Twitch's current system for sending event notifications.
+
+The broadcaster owns the channel. A moderator is a helper with channel chat
+powers. An editor is a different channel helper role. A bot is an automated
+account. Granting a scope does not give the account any of these roles.
+
+'Your' or 'authorizing user' means the account that gave the permission.
+A scope on MedlarTV's token does not automatically control DevilMedlar's
+channel. Channel-owner actions generally need DevilMedlar's authorization;
+moderator actions need the appropriate role and matching account/channel
+identities. Each action also checks the token type, app identity, available
+feature, and any additional scopes or limits. An app token identifies the
+app; a user token identifies an authorizing account. Neither is printed here.
+
+Grant present is not function tested. The diagnostic grant lists prove only
+what permissions Twitch reported for those tokens at that time. This guide
+checks the documented meaning, not successful execution of all 99 features.
+Historical names are kept for full coverage; they are not working aliases
+for similarly named modern scopes. Use only the permissions a feature needs.
+
+How to read the entries
+
+Each entry gives the exact scope name, what it permits, a simple example,
+and a boundary or extra requirement. Sources [1]-[9] are linked at the end.
+For current scopes, [1] and [2] are the official catalog and action reference;
+[3] covers notification-specific requirements. Role checks in these sources
+still apply even when an example sounds simple.
+
+MAIN INVENTORY
+
+A. Current API and chat permissions
+
+001. analytics:read:extensions
+  Type: READ
+  What it does: See reports about Twitch extensions you develop. An extension is a small
+  extra panel or tool added to a stream.
+  Example: download a report showing how people used your extension.
+  Limits: This is developer analytics, not permission to read every viewer's private
+  information. The app/user must have the required ownership or access to the extension.
+  Sources: [1], [2], [3].
+
+002. analytics:read:games
+  Type: READ
+  What it does: See Twitch viewing reports for games your developer organization owns.
+  Example: download a report about people watching streams of your game.
+  Limits: This does not give reports for every game or let you change a game. The
+  developer organization must have access to it.
+  Sources: [1], [2], [3].
+
+003. bits:read
+  Type: READ
+  What it does: See your channel's Bits information, such as its Bits leaderboard. Bits
+  are Twitch's paid cheering items. It also authorizes supported cheer, Bits-use, and
+  custom Power-up redemption notifications; Power-ups are special channel interactions
+  bought with Bits.
+  Example: show which viewers have cheered the most Bits.
+  Limits: This does not buy, spend, refund, or transfer Bits. The broadcaster's account
+  must authorize access.
+  Sources: [1], [2], [3].
+
+004. channel:bot
+  Type: BOT AUTHORIZATION
+  What it does: Let an app's bot use supported chat actions in the broadcaster's channel
+  with the app's own access token.
+  Example: the broadcaster allows a cloud bot to receive chat or send
+  messages in this channel.
+  Limits: It is one piece of permission, not a general master key. The bot user's
+  user:bot and the particular read/write chat scope are also needed where specified;
+  moderator status can be an alternative to channel:bot for documented flows.
+  Sources: [1], [2], [3].
+
+005. channel:edit:commercial
+  Type: CHANGE
+  What it does: Start a commercial break on the authorizing broadcaster's channel.
+  Example: request a 60-second ad break during a live stream.
+  Limits: The channel must be eligible and live, and Twitch controls accepted lengths,
+  timing, and cooldowns. This does not grant ad-schedule control or guarantee every
+  viewer sees an ad.
+  Sources: [1], [2], [3].
+
+006. channel:manage:ads
+  Type: CHANGE
+  What it does: Snooze the broadcaster's next scheduled automatic ad by five minutes
+  when a snooze is available. The reply includes next-ad and remaining-snooze
+  information.
+  Example: postpone an ad so it does not interrupt an important moment.
+  Limits: The name does not mean unrestricted control over every ad setting. Snoozes are
+  limited, the channel must be eligible, and starting a commercial uses
+  channel:edit:commercial. Reading the schedule through Get Ad Schedule separately
+  requires channel:read:ads.
+  Sources: [1], [2], [3].
+
+007. channel:manage:broadcast
+  Type: CHANGE AND READ
+  What it does: Change supported channel information, including the stream title,
+  game/category, language, and tags, and create/read stream markers.
+  Example: change the title to 'Learning a new game' or save a marker at an
+  exciting moment.
+  Limits: This changes Twitch channel information, not the local camera, microphone,
+  game, or streaming program. Individual fields and actions have their own restrictions.
+  Sources: [1], [2], [3].
+
+008. channel:manage:clips
+  Type: CHANGE AND READ
+  What it does: As a broadcaster, create clips from your saved broadcasts and get
+  download links for your channel's clips.
+  Example: make a clip from yesterday's recorded stream, then request its
+  download link.
+  Limits: A saved broadcast is often called a VOD. This is limited to the broadcaster's
+  channel and the documented clip actions, not arbitrary editing of anyone's clips.
+  Sources: [1], [2], [3].
+
+009. channel:manage:extensions
+  Type: CHANGE
+  What it does: Manage extension activation/configuration on the authorizing
+  broadcaster's channel.
+  Example: put an installed interactive extension into an available channel
+  slot.
+  Limits: The official scope catalog describes extension configuration. However, the
+  current Update User Extensions action explicitly requires user:edit:broadcast. Do not
+  assume this grant alone passes that action. It does not control other channel settings
+  or install software on a computer.
+  Sources: [1], [2], [3].
+
+010. channel:manage:guest_star
+  Type: CHANGE AND READ
+  What it does: As the broadcaster, manage the supported Guest Star session, settings,
+  invitations, guest slots, and slot settings.
+  Example: invite a guest and assign that guest to a stream slot.
+  Limits: These actions can affect who appears in the guest session. Twitch's feature
+  access and individual action requirements still apply; this is not control of guests'
+  computers. Twitch marks these Guest Star API actions as beta, meaning they may change.
+  Sources: [1], [2], [3].
+
+011. channel:manage:moderators
+  Type: CHANGE AND READ
+  What it does: Add or remove moderators on the authorizing broadcaster's channel. It
+  also permits reading the moderator list.
+  Example: give a trusted helper the moderator role.
+  Limits: This changes another person's channel powers. Only the broadcaster's
+  authorization is enough for these channel-owner actions; being a moderator does not
+  let a bot promote itself.
+  Sources: [1], [2], [3].
+
+012. channel:manage:polls
+  Type: CHANGE AND READ
+  What it does: Create, read, and end polls for the authorizing broadcaster's channel.
+  Example: ask viewers which game to play and end the poll after voting.
+  Limits: This does not cast votes for viewers. Twitch's eligibility, choice, duration,
+  and active-poll limits still apply.
+  Sources: [1], [2], [3].
+
+013. channel:manage:predictions
+  Type: CHANGE AND READ
+  What it does: Create/read Channel Points Predictions and lock, resolve, or cancel them
+  on the broadcaster's channel.
+  Example: stop new predictions when a match starts, then choose the
+  winning outcome afterward.
+  Limits: Choosing an outcome affects viewers' Channel Points. Twitch's eligibility and
+  timing rules still apply; this is not permission to spend real money.
+  Sources: [1], [2], [3].
+
+014. channel:manage:raids
+  Type: CHANGE
+  What it does: Start or cancel an outgoing raid from the authorizing broadcaster's
+  channel. A raid sends the audience toward another live channel.
+  Example: send viewers to a friend's stream after your stream ends.
+  Limits: It does not control the destination channel. Twitch's raid availability and
+  timing restrictions still apply.
+  Sources: [1], [2], [3].
+
+015. channel:manage:redemptions
+  Type: CHANGE AND READ
+  What it does: Create, change, and delete custom Channel Points rewards, and manage
+  their redemption requests.
+  Example: create a 500-point reward or mark a viewer's request fulfilled
+  or canceled.
+  Limits: The broadcaster authorizes it. An app can only change/delete rewards and
+  update redemptions it is entitled to manage, including Twitch's app-created reward
+  restrictions; it is not free control of every reward made by other apps.
+  Sources: [1], [2], [3].
+
+016. channel:manage:schedule
+  Type: CHANGE
+  What it does: Create, change, or delete supported stream-schedule entries and update
+  vacation settings for the broadcaster's channel.
+  Example: move a planned Friday stream to Saturday.
+  Limits: This changes Twitch's schedule, not a calendar app or the actual start of a
+  stream. One-off/recurring schedule options depend on channel eligibility.
+  Sources: [1], [2], [3].
+
+017. channel:manage:videos
+  Type: DELETE
+  What it does: Delete supported videos belonging to the authorizing broadcaster.
+  Example: remove an unwanted saved broadcast from the channel.
+  Limits: Deletion can be destructive. The broad name does not grant arbitrary video
+  editing, uploading, or deletion on other channels.
+  Sources: [1], [2], [3].
+
+018. channel:manage:vips
+  Type: CHANGE AND READ
+  What it does: Add/remove VIPs and read the VIP list for the broadcaster's channel.
+  Example: give a longtime viewer the VIP role.
+  Limits: This changes channel roles. The broadcaster must authorize it, and Twitch's
+  VIP-slot and role restrictions still apply.
+  Sources: [1], [2], [3].
+
+019. channel:moderate
+  Type: READ EVENTS
+  What it does: Receive Twitch notifications when someone is banned, timed out, or
+  unbanned in the authorized channel.
+  Example: update a moderation log when a ban happens.
+  Limits: Despite the broad name and old description, the current scope catalog maps
+  this to ban/unban EventSub notifications. It is not general permission to perform
+  modern moderation actions.
+  Sources: [1], [2], [3].
+
+020. channel:read:ads
+  Type: READ
+  What it does: Read the broadcaster's ad schedule and supported ad-break
+  information/events.
+  Example: show a countdown until the next scheduled ad.
+  Limits: It cannot start, snooze, or reschedule an ad. Ad-related features must be
+  available to the channel.
+  Sources: [1], [2], [3].
+
+021. channel:read:charity
+  Type: READ
+  What it does: Read the broadcaster's supported charity campaign information and
+  donation records/events.
+  Example: show how close a charity campaign is to its goal.
+  Limits: It cannot donate, take payments, change the charity, or reveal a donor's
+  payment-card details.
+  Sources: [1], [2], [3].
+
+022. channel:read:editors
+  Type: READ
+  What it does: Read who has the editor role on the authorizing broadcaster's channel.
+  Example: show the streamer's list of helpers who can edit channel
+  content.
+  Limits: This does not add or remove editors, and it does not make the bot an editor.
+  Sources: [1], [2], [3].
+
+023. channel:read:goals
+  Type: READ
+  What it does: Read the broadcaster's creator goals and supported progress
+  notifications.
+  Example: show progress toward a follower or subscriber goal.
+  Limits: It cannot create or change the goal, follow the channel for someone, or buy
+  subscriptions.
+  Sources: [1], [2], [3].
+
+024. channel:read:guest_star
+  Type: READ
+  What it does: As the broadcaster, read the channel's Guest Star settings, current
+  session, guests/invites, and supported activity notifications.
+  Example: see which invited guest is waiting to join the stream.
+  Limits: Guest Star is the API name for Twitch's guest-on-stream tools. It cannot
+  invite/remove guests or change the session. Feature access must be available to the
+  channel. Twitch marks these Guest Star API actions as beta, meaning they may change.
+  Sources: [1], [2], [3].
+
+025. channel:read:hype_train
+  Type: READ
+  What it does: Read your channel's Hype Train information and receive its supported
+  progress notifications. A Hype Train is a shared cheering/subscription goal.
+  Example: show the current Hype Train level and progress.
+  Limits: It does not start a train on demand, buy subscriptions, or spend Bits. The
+  channel must have the feature.
+  Sources: [1], [2], [3].
+
+026. channel:read:polls
+  Type: READ
+  What it does: Read polls and poll progress/results for the authorizing broadcaster's
+  channel.
+  Example: show how many votes each game choice received.
+  Limits: It cannot create/end a poll or cast votes. The channel must be eligible for
+  polls.
+  Sources: [1], [2], [3].
+
+027. channel:read:predictions
+  Type: READ
+  What it does: Read the channel's Channel Points Predictions and their
+  progress/results. Viewers use points to predict an outcome.
+  Example: see the points placed on 'win' and 'lose'.
+  Limits: It cannot create, lock, cancel, or choose the winning outcome of a prediction.
+  Sources: [1], [2], [3].
+
+028. channel:read:redemptions
+  Type: READ
+  What it does: Read your channel's custom Channel Points rewards and their redemption
+  records. A redemption is a viewer spending channel points to request a reward.
+  Example: see who redeemed 'choose the next game'.
+  Limits: It cannot create rewards, change their price, or mark requests
+  complete/refunded. Channel Points must be available to the channel.
+  Sources: [1], [2], [3].
+
+029. channel:read:stream_key
+  Type: READ A SECRET
+  What it does: Read the broadcaster's stream key, the secret that streaming software
+  uses to send video to Twitch.
+  Example: streaming software can use the key to connect a broadcast.
+  Limits: Treat the key like a password: someone who gets it may be able to broadcast to
+  the channel. This permission reads the key; it does not itself reset the key.
+  Sources: [1], [2], [3].
+
+030. channel:read:subscriptions
+  Type: READ
+  What it does: Read the broadcaster's subscriber list and check whether a particular
+  user subscribes to that channel. It also supports subscription start/end, gift, and
+  subscription-message notifications.
+  Example: show a subscriber count or check whether a viewer is subscribed.
+  Limits: The channel's broadcaster must authorize it. It does not subscribe anyone,
+  charge money, or expose a subscriber's payment card.
+  Sources: [1], [2], [3].
+
+031. channel:read:vips
+  Type: READ
+  What it does: Read the VIP list for the authorizing broadcaster's channel.
+  Example: show which regular viewers have the VIP badge.
+  Limits: VIP means a special channel role. Reading the list does not give or remove
+  that role.
+  Sources: [1], [2], [3].
+
+032. chat:edit
+  Type: SEND
+  What it does: Send chat messages as the authorizing user through Twitch's IRC chat
+  connection.
+  Example: the bot replies 'Hello!' in a channel.
+  Limits: This does not edit another person's chat message. It is separate from the
+  modern Send Chat Message API permission, user:write:chat. Chat bans, channel
+  restrictions, and rate limits still apply.
+  Sources: [1], [2], [3].
+
+033. chat:read
+  Type: READ
+  What it does: Read live channel chat through Twitch's IRC chat connection. IRC is the
+  older chat connection used by many bots.
+  Example: a bot watches for '!hello' typed in chat.
+  Limits: This is live chat, not a promise of old chat history. It does not send
+  messages. Modern EventSub chat uses user:read:chat instead.
+  Sources: [1], [2], [3].
+
+034. clips:edit
+  Type: CHANGE
+  What it does: Create a short clip from a channel's live stream as the user who gave
+  permission.
+  Example: capture a funny moment while a streamer is live.
+  Limits: The name is misleading: it is not blanket permission to edit any existing
+  clip. The channel must allow clipping and Twitch's clip limits still apply.
+  Sources: [1], [2], [3].
+
+035. editor:manage:clips
+  Type: CHANGE AND READ
+  What it does: As an authorized channel editor, create clips from that channel's saved
+  broadcasts and get its clip download links.
+  Example: an editor can prepare a highlight from the streamer's recording.
+  Limits: The user must actually have editor permission for that channel. Giving this
+  scope alone does not make them an editor.
+  Sources: [1], [2], [3].
+
+036. moderation:read
+  Type: READ AND CHECK
+  What it does: Read the broadcaster's banned/timed-out users and moderator list,
+  receive supported moderator-role events, and check sample message text against
+  AutoMod.
+  Example: list banned users or ask whether a proposed message would
+  trigger AutoMod.
+  Limits: A check does not post the message. This does not ban/unban/promote anyone or
+  grant general access to every AutoMod setting.
+  Sources: [1], [2], [3].
+
+037. moderator:manage:announcements
+  Type: SEND
+  What it does: Send a highlighted chat announcement in a channel you are allowed to
+  moderate.
+  Example: post a prominent message saying 'The event starts in five
+  minutes'.
+  Limits: The sender/channel must meet broadcaster or moderator requirements. This is a
+  public chat announcement, not a private message.
+  Sources: [1], [2], [3].
+
+038. moderator:manage:automod
+  Type: CHANGE
+  What it does: Approve or reject messages that AutoMod held for review. AutoMod is
+  Twitch's automatic chat filter.
+  Example: let an incorrectly held harmless message appear in chat.
+  Limits: The authorizing account must have the required moderation role in that
+  channel. This scope reviews held messages; changing filter strength uses a separate
+  settings permission.
+  Sources: [1], [2], [3].
+
+039. moderator:manage:automod_settings
+  Type: CHANGE AND READ
+  What it does: Read and change AutoMod filter levels for a channel you are allowed to
+  moderate.
+  Example: make a category of chat filtering stricter.
+  Limits: This can change which messages are held. It does not replace the separate
+  permission used to approve or reject individual held messages.
+  Sources: [1], [2], [3].
+
+040. moderator:manage:banned_users
+  Type: CHANGE AND READ
+  What it does: Ban or unban users and set or remove timeouts in a channel you are
+  allowed to moderate; it can also support reading the ban list.
+  Example: stop a disruptive viewer from chatting for ten minutes.
+  Limits: A timeout is a temporary channel chat ban. This does not ban someone from all
+  of Twitch, and Twitch protects certain roles from these actions.
+  Sources: [1], [2], [3].
+
+041. moderator:manage:blocked_terms
+  Type: CHANGE AND READ
+  What it does: Read, add, and remove supported blocked words/phrases for a channel you
+  are allowed to moderate.
+  Example: add a repeated spam phrase to the blocked list.
+  Limits: It does not change every AutoMod setting or every user's personal block list.
+  Only terms exposed to this moderation action can be managed.
+  Sources: [1], [2], [3].
+
+042. moderator:manage:chat_messages
+  Type: CHANGE AND READ
+  What it does: Delete individual chat messages or clear supported chat history, and
+  perform the documented pin, update-pin, and unpin actions. It also permits reading the
+  current pinned message.
+  Example: remove a spam message or keep an important message pinned where
+  viewers can see it.
+  Limits: The account must be allowed to moderate the channel. Pin actions have
+  additional role/feature rules; a scope alone is not a promise that every moderator can
+  pin. Deleting a message does not ban its sender.
+  Sources: [1], [2], [3].
+
+043. moderator:manage:chat_settings
+  Type: CHANGE
+  What it does: Change supported chat modes in a channel you are allowed to moderate.
+  Twitch returns the updated settings.
+  Example: turn on slow mode, which makes people wait between messages, or
+  follower-only chat.
+  Limits: This affects who can chat and how often. It does not change the stream title
+  or grant the moderator role. Reading moderator-only delay details through Get Chat
+  Settings separately requires moderator:read:chat_settings.
+  Sources: [1], [2], [3].
+
+044. moderator:manage:guest_star
+  Type: CHANGE AND READ
+  What it does: As an allowed Guest Star moderator, manage the guest invitations,
+  assignments, and slot settings permitted by the specific actions.
+  Example: help place an invited guest into the correct slot.
+  Limits: It does not automatically grant broadcaster-only powers such as all channel
+  settings or session lifecycle actions. The channel must give the account the required
+  Guest Star role. Twitch marks these Guest Star API actions as beta, meaning they may
+  change.
+  Sources: [1], [2], [3].
+
+045. moderator:manage:shield_mode
+  Type: CHANGE AND READ
+  What it does: Read Shield Mode status and turn it on or off for a channel you are
+  allowed to moderate.
+  Example: switch on the channel's prepared protections during a spam
+  attack.
+  Limits: The documented action toggles Shield Mode; do not assume it edits every saved
+  preset. Channel moderation-role rules apply.
+  Sources: [1], [2], [3].
+
+046. moderator:manage:shoutouts
+  Type: SEND
+  What it does: Send a Twitch shoutout from a channel you are allowed to moderate to
+  another broadcaster.
+  Example: recommend a guest streamer's channel in chat.
+  Limits: The broadcaster or moderator must be authorized. Twitch's live-stream, viewer,
+  and cooldown requirements still apply; it is not a raid.
+  Sources: [1], [2], [3].
+
+047. moderator:manage:suspicious_users
+  Type: CHANGE
+  What it does: Change supported suspicious-user monitoring/restriction status for a
+  user in a channel you are allowed to moderate.
+  Example: mark an account for monitoring or restrict how its messages
+  appear while moderators review it.
+  Limits: This is different from banning or timing out. Twitch's supported status
+  values, roles, and feature restrictions apply.
+  Sources: [1], [2], [3].
+
+048. moderator:manage:unban_requests
+  Type: CHANGE AND READ
+  What it does: Read and resolve supported unban requests for a channel you are allowed
+  to moderate.
+  Example: approve an appeal and unban the viewer, or deny the appeal with
+  a reason.
+  Limits: This affects whether a banned viewer may return to chat. It does not grant
+  moderation access to a channel that has not authorized the account.
+  Sources: [1], [2], [3].
+
+049. moderator:manage:warnings
+  Type: CHANGE
+  What it does: Send a formal Twitch chat warning to a user in a channel you are allowed
+  to moderate.
+  Example: warn a viewer to stop posting spoilers; Twitch can require
+  acknowledgement before they chat again.
+  Limits: A warning is not a ban or timeout. The account must have the required channel
+  role, and protected-user/action rules still apply.
+  Sources: [1], [2], [3].
+
+050. moderator:read:automod_settings
+  Type: READ
+  What it does: Read AutoMod's filter levels for a channel you are allowed to moderate.
+  Example: see how strongly the channel filters certain kinds of unwanted
+  chat.
+  Limits: It cannot change filter levels or approve held messages. The required channel
+  role still matters.
+  Sources: [1], [2], [3].
+
+051. moderator:read:banned_users
+  Type: READ EVENTS
+  What it does: Receive the supported details about bans, unbans, and timeouts in
+  Channel Moderate notifications. These are event updates about moderation actions in a
+  channel you are allowed to moderate.
+  Example: let a moderation log record bans, unbans, and timeouts when they
+  happen.
+  Limits: This does not change roles or punish users. It is not by itself permission to
+  call the separate full-list actions such as Get Banned Users, Get Moderators, or Get
+  VIPs. The notification type can require a combination of additional scopes.
+  Sources: [1], [2], [3].
+
+052. moderator:read:blocked_terms
+  Type: READ
+  What it does: Read a channel's blocked words and phrases that the moderation tools
+  expose.
+  Example: show a moderator the channel's blocked spam phrase list.
+  Limits: It does not add or remove phrases, and it should not be treated as access to
+  private terms Twitch does not expose. The account needs the required channel role.
+  Sources: [1], [2], [3].
+
+053. moderator:read:chat_messages
+  Type: READ
+  What it does: Read supported pinned-chat information and receive supported deleted-
+  message notifications for a channel you are allowed to moderate.
+  Example: display which message is pinned or record that a message was
+  deleted.
+  Limits: It does not delete or pin messages and is not a substitute for general live-
+  chat reading permission.
+  Sources: [1], [2], [3].
+
+054. moderator:read:chat_settings
+  Type: READ
+  What it does: Read the channel's chat rules/settings, including extra moderator-only
+  details where allowed.
+  Example: see whether slow mode or follower-only chat is on.
+  Limits: It cannot turn those modes on or off. The account must have the required
+  channel role for restricted details.
+  Sources: [1], [2], [3].
+
+055. moderator:read:chatters
+  Type: READ
+  What it does: Read the list of accounts connected to a channel's chat when you have
+  the required moderation role.
+  Example: show which accounts are present in chat.
+  Limits: A chatter list is not an exact viewer list: people can watch without joining
+  chat, and changes may take time to appear. It does not show private identity
+  information.
+  Sources: [1], [2], [3].
+
+056. moderator:read:followers
+  Type: READ
+  What it does: Read follower details and receive supported new-follower notifications
+  for a channel you are allowed to moderate.
+  Example: welcome a new follower by name.
+  Limits: It does not follow/unfollow on anyone's behalf. The moderator or broadcaster
+  relationship matters; a scope does not let any account see every channel's restricted
+  follower details.
+  Sources: [1], [2], [3].
+
+057. moderator:read:guest_star
+  Type: READ
+  What it does: As an allowed Guest Star moderator, read supported settings, session,
+  guest/invite information, and guest-session notifications for that channel.
+  Example: see which invited guest is waiting before helping the streamer.
+  Limits: The account must actually have the required Guest Star moderation access. This
+  scope does not grant that role or allow changing a session. Twitch marks these Guest
+  Star API actions as beta, meaning they may change.
+  Sources: [1], [2], [3].
+
+058. moderator:read:moderators
+  Type: READ EVENTS
+  What it does: Receive the supported details about moderator-role changes in Channel
+  Moderate notifications. These are event updates about moderation actions in a channel
+  you are allowed to moderate.
+  Example: let a moderation log record moderator-role changes when they
+  happen.
+  Limits: This does not change roles or punish users. It is not by itself permission to
+  call the separate full-list actions such as Get Banned Users, Get Moderators, or Get
+  VIPs. The notification type can require a combination of additional scopes.
+  Sources: [1], [2], [3].
+
+059. moderator:read:shield_mode
+  Type: READ
+  What it does: Read whether Shield Mode is active and its supported status
+  notifications. Shield Mode applies a channel's prepared protective chat settings.
+  Example: show a red indicator while the channel is using Shield Mode.
+  Limits: It cannot turn Shield Mode on/off, and it is not blanket permission to edit
+  all Shield Mode preset settings.
+  Sources: [1], [2], [3].
+
+060. moderator:read:shoutouts
+  Type: READ EVENTS
+  What it does: Receive notifications about a channel's incoming and outgoing Twitch
+  shoutouts.
+  Example: show a notice when another streamer shouts out this channel.
+  Limits: It does not send a shoutout or provide a complete historical shoutout
+  database. Required channel-role rules apply.
+  Sources: [1], [2], [3].
+
+061. moderator:read:suspicious_users
+  Type: READ EVENTS
+  What it does: Receive supported notices about suspicious users and messages from
+  monitored/restricted suspicious users in a channel you moderate.
+  Example: alert moderators when a possible ban evader sends a message.
+  Limits: A suspicious label is a warning, not proof of wrongdoing. This does not change
+  a user's suspicious status or ban the user.
+  Sources: [1], [2], [3].
+
+062. moderator:read:unban_requests
+  Type: READ
+  What it does: Read appeals from people asking to be unbanned from a channel you are
+  allowed to moderate.
+  Example: show the moderation team why a banned viewer is asking to
+  return.
+  Limits: It cannot approve or deny the appeal. Requests can contain private or
+  sensitive explanations.
+  Sources: [1], [2], [3].
+
+063. moderator:read:vips
+  Type: READ EVENTS
+  What it does: Receive the supported details about VIP-role changes in Channel Moderate
+  notifications. These are event updates about moderation actions in a channel you are
+  allowed to moderate.
+  Example: let a moderation log record VIP-role changes when they happen.
+  Limits: This does not change roles or punish users. It is not by itself permission to
+  call the separate full-list actions such as Get Banned Users, Get Moderators, or Get
+  VIPs. The notification type can require a combination of additional scopes.
+  Sources: [1], [2], [3].
+
+064. moderator:read:warnings
+  Type: READ EVENTS
+  What it does: Receive supported notifications when a chat warning is sent or
+  acknowledged in a channel you are allowed to moderate.
+  Example: show that a viewer acknowledged a warning about a chat rule.
+  Limits: It does not send warnings and is not a complete historical log unless the app
+  separately stores permitted events.
+  Sources: [1], [2], [3].
+
+065. user:bot
+  Type: BOT AUTHORIZATION
+  What it does: Let an app act as this bot user in supported chat actions using the
+  app's own access token.
+  Example: the MedlarTV account permits the app to use MedlarTV as its chat
+  identity.
+  Limits: This does not make the bot a moderator or grant every action. The relevant
+  chat scope and channel-side authorization are still required for the chosen action.
+  Sources: [1], [2], [3].
+
+066. user:edit
+  Type: CHANGE
+  What it does: Change the authorizing user's profile description, also called their
+  bio.
+  Example: change a profile bio to say when the user streams.
+  Limits: This is not control over the whole account. It does not change a password or
+  grant arbitrary account settings access.
+  Sources: [1], [2], [3].
+
+067. user:edit:broadcast
+  Type: CHANGE
+  What it does: Read the authorizing user's installed extensions (including inactive
+  ones), and change which supported extensions are active. Extensions are extra tools or
+  panels on the channel.
+  Example: activate an installed extension in a supported channel slot.
+  Limits: Do not treat this as permission for every stream setting. It does not
+  automatically grant all of user:read:broadcast; stream title/category changes use
+  channel:manage:broadcast.
+  Sources: [1], [2], [3].
+
+068. user:manage:blocked_users
+  Type: CHANGE
+  What it does: Add or remove accounts from the authorizing user's personal block list.
+  Example: block an unwanted account or undo a previous block.
+  Limits: It does not ban that account from every channel or change another user's block
+  list.
+  Sources: [1], [2], [3].
+
+069. user:manage:chat_color
+  Type: CHANGE
+  What it does: Change the color of the authorizing user's name in chat.
+  Example: make the bot's chat name blue.
+  Limits: It does not change anyone else's name color. Twitch limits which colors are
+  available to the account.
+  Sources: [1], [2], [3].
+
+070. user:manage:whispers
+  Type: SEND AND READ EVENTS
+  What it does: Send private Twitch whispers as the authorizing user and receive
+  supported incoming-whisper notifications.
+  Example: send a private reply and be notified when someone whispers back.
+  Limits: This is not access to the user's entire historical whisper inbox or a sent-
+  message archive. Whisper eligibility, verification, privacy settings, and rate limits
+  still apply.
+  Sources: [1], [2], [3].
+
+071. user:read:blocked_users
+  Type: READ
+  What it does: Read the list of accounts the authorizing user has personally blocked.
+  Example: display that user's block list in an account tool.
+  Limits: A personal block is different from banning someone from a channel. This does
+  not change either list.
+  Sources: [1], [2], [3].
+
+072. user:read:broadcast
+  Type: READ
+  What it does: See the authorizing user's active extensions and read their stream
+  markers. A marker is a saved note at a moment in a stream.
+  Example: find a marker saying 'great play' when editing a recording.
+  Limits: This does not create markers or change extensions. The account and requested
+  stream must meet the particular action's ownership/editor rules.
+  Sources: [1], [2], [3].
+
+073. user:read:chat
+  Type: READ EVENTS
+  What it does: Receive live channel-chat messages and related supported chat
+  notifications using EventSub, Twitch's system for sending apps event updates.
+  Example: a bot receives a message when someone types '!help'.
+  Limits: It does not send chat or fetch old chat history. App-token chat flows need the
+  additional bot/channel grants or role alternatives documented by Twitch.
+  Sources: [1], [2], [3].
+
+074. user:read:email
+  Type: READ PRIVATE DATA
+  What it does: Read the email address of the user who gave permission.
+  Example: an app can learn the email attached to that user's Twitch
+  account.
+  Limits: It cannot read their email inbox, change the email address, or get other
+  viewers' email addresses.
+  Sources: [1], [2], [3].
+
+075. user:read:emotes
+  Type: READ
+  What it does: Read the Twitch emotes available for the authorizing user to use. Emotes
+  are small chat pictures.
+  Example: let a bot choose an emote that its account can actually send.
+  Limits: It does not unlock paid emotes, buy subscriptions, or upload/change channel
+  emotes.
+  Sources: [1], [2], [3].
+
+076. user:read:follows
+  Type: READ
+  What it does: Read the channels the authorizing user follows and see which followed
+  channels are live.
+  Example: show a list of followed streamers who are streaming now.
+  Limits: It does not follow or unfollow channels. It does not grant private follow
+  lists for arbitrary other accounts.
+  Sources: [1], [2], [3].
+
+077. user:read:moderated_channels
+  Type: READ
+  What it does: Read the channels where the authorizing user has the moderator role.
+  Example: list the channels that the bot is allowed to help moderate.
+  Limits: It does not give moderation powers in a new channel or list every channel's
+  moderators.
+  Sources: [1], [2], [3].
+
+078. user:read:subscriptions
+  Type: READ
+  What it does: Check whether the authorizing user subscribes to a specified channel and
+  read the supported subscription details.
+  Example: check whether the bot's owner subscribes to a particular
+  streamer.
+  Limits: This is the viewer's side of a subscription, not a broadcaster's complete
+  subscriber list. It cannot buy, renew, or cancel a subscription.
+  Sources: [1], [2], [3].
+
+079. user:read:whispers
+  Type: READ EVENTS
+  What it does: Receive notifications containing new incoming whispers to the user who
+  gave permission.
+  Example: let an app notice a new private Twitch message.
+  Limits: It does not send whispers or fetch the user's entire past whisper history.
+  These messages are private.
+  Sources: [1], [2], [3].
+
+080. user:write:chat
+  Type: SEND
+  What it does: Send live chat messages as the authorizing user using Twitch's Send Chat
+  Message API, the modern program interface.
+  Example: the bot replies to a question in chat.
+  Limits: It cannot edit/delete other users' messages. App-token use additionally needs
+  user:bot and channel authorization or the documented moderator alternative; chat
+  restrictions and rate limits remain.
+  Sources: [1], [2], [3].
+
+B. Current sign-in permission
+
+081. openid
+  Type: SIGN IN
+  What it does: Ask Twitch for an OpenID Connect identity token so an app can recognize
+  who signed in.
+  Example: an app confirms that a Twitch sign-in belongs to the expected
+  account.
+  Limits: OpenID Connect is a sign-in standard. This does not by itself allow chat,
+  moderation, email access, or changing the account; other requested identity details
+  and permissions are separate.
+  Source: [4].
+
+C. Historical names still reported in both accounts
+
+These names are retained exactly as Twitch reported them. Historical purpose
+is background, not proof of a working current action. The old v5 API shut
+down on February 28, 2022. Some features had already retired separately.
+Current official documentation does not establish every old endpoint or
+field, so uncertain historical details are not presented as guarantees.
+
+082. channel_check_subscription
+  Status: HISTORICAL GRANT; no current usable ability established here.
+  Old purpose: Historically, check whether a viewer subscribed to a channel.
+  Example: an old app could check a subscriber-only benefit.
+  Today: For current broadcaster subscriber checks, see channel:read:subscriptions.
+  Sources: [1], [6].
+
+083. channel_commercial
+  Status: HISTORICAL GRANT; no current usable ability established here.
+  Old purpose: Historically, start a commercial break for a channel.
+  Example: an old broadcaster tool could request an ad.
+  Today: The current commercial permission is channel:edit:commercial.
+  Sources: [1], [6].
+
+084. channel_editor
+  Status: HISTORICAL GRANT; no current usable ability established here.
+  Old purpose: Historically, edit supported channel information through the old Twitch
+  API.
+  Example: an old channel tool could update a stream title.
+  Today: Current title/category changes use channel:manage:broadcast. This old name does
+  not make the account a channel editor.
+  Sources: [1], [6].
+
+085. channel_feed_edit
+  Status: HISTORICAL GRANT; no current usable ability established here.
+  Old purpose: Historically, change a channel's old feed posts and supported feed
+  interactions.
+  Example: Think of the retired feed as a small channel bulletin board.
+  Today: The old channel-feed feature is not a current chat permission; no current
+  working feed action is established here.
+  Sources: [1], [6].
+
+086. channel_feed_read
+  Status: HISTORICAL GRANT; no current usable ability established here.
+  Old purpose: Historically, read a channel's old feed posts and supported feed
+  interactions.
+  Example: an old app could show channel bulletin-board posts.
+  Today: This is not live chat, a video feed, or current activity history. No current
+  working feed action is established here.
+  Sources: [1], [6].
+
+087. channel_read
+  Status: HISTORICAL GRANT; no current usable ability established here.
+  Old purpose: Historically, read private channel information through the old Twitch
+  API.
+  Example: an old channel-management app requested channel details that
+  needed permission.
+  Today: Do not interpret this as every modern channel-read scope or assume it exposes
+  any particular current private field.
+  Sources: [1], [6].
+
+088. channel_stream
+  Status: HISTORICAL GRANT; no current usable ability established here.
+  Old purpose: Historically, a permission associated with channel streaming/stream-key
+  access in the old API.
+  Example: Think of it as an old permission label used by streaming tools.
+  Today: Its exact old endpoint coverage is not confirmed by the current official
+  documentation used here. Do not rely on it today; modern stream-key reading uses
+  channel:read:stream_key.
+  Sources: [1], [6].
+
+089. channel_subscriptions
+  Status: HISTORICAL GRANT; no current usable ability established here.
+  Old purpose: Historically, read a channel's subscribers.
+  Example: an old broadcaster tool could list subscribers.
+  Today: Current subscriber-list access uses channel:read:subscriptions. This old name
+  does not buy or cancel subscriptions.
+  Sources: [1], [6].
+
+090. collections_edit
+  Status: HISTORICAL GRANT; no current usable ability established here.
+  Old purpose: Historically, create/change collections that grouped channel videos.
+  Example: an old app could arrange videos into a themed collection.
+  Today: Do not confuse a retired video-collection permission with permission to upload,
+  edit, or delete current videos.
+  Sources: [1], [6].
+
+091. communities_edit
+  Status: HISTORICAL GRANT; no current usable ability established here.
+  Old purpose: Historically, edit Twitch Communities, a retired way of grouping streams
+  by shared interests.
+  Example: an old tool helped manage a community's settings.
+  Today: This is not permission to edit present-day channels, categories, teams, Discord
+  servers, or chat rooms.
+  Sources: [1], [6].
+
+092. communities_moderate
+  Status: HISTORICAL GRANT; no current usable ability established here.
+  Old purpose: Historically, moderate Twitch Communities, the retired grouping feature.
+  Example: an old community tool helped enforce that community's rules.
+  Today: It does not grant current channel moderator status or modern channel moderation
+  powers.
+  Sources: [1], [6].
+
+093. user_blocks_edit
+  Status: HISTORICAL GRANT; no current usable ability established here.
+  Old purpose: Historically, add/remove accounts from a user's personal block list.
+  Example: an old account tool could block an unwanted contact.
+  Today: Current personal blocking uses user:manage:blocked_users; this old grant is not
+  a channel ban permission.
+  Sources: [1], [6].
+
+094. user_blocks_read
+  Status: HISTORICAL GRANT; no current usable ability established here.
+  Old purpose: Historically, read a user's personal block list.
+  Example: an old account tool could show blocked contacts.
+  Today: Current block-list reading uses user:read:blocked_users. Reading does not
+  change the list.
+  Sources: [1], [6].
+
+095. user_follows_edit
+  Status: HISTORICAL GRANT; no current usable ability established here.
+  Old purpose: Historically, follow or unfollow channels as a user.
+  Example: an old app could add a streamer to someone's followed channels.
+  Today: Twitch retired the follow/unfollow API actions. A grant containing this name
+  does not make those actions work again.
+  Sources: [1], [6], [7].
+
+096. user_read
+  Status: HISTORICAL GRANT; no current usable ability established here.
+  Old purpose: Historically, read nonpublic user-account information exposed by the old
+  API.
+  Example: an old account tool requested account information requiring
+  sign-in.
+  Today: This is not a modern all-access user-data permission. Use the current specific
+  scopes, such as user:read:email, only for the fields/actions they document.
+  Sources: [1], [6].
+
+097. user_subscriptions
+  Status: HISTORICAL GRANT; no current usable ability established here.
+  Old purpose: Historically, check a user's subscription relationship to a channel.
+  Example: an old app could check whether that user subscribed to a
+  streamer.
+  Today: The current viewer-side check uses user:read:subscriptions. This does not imply
+  payment or cancellation powers.
+  Sources: [1], [6].
+
+098. viewing_activity_read
+  Status: HISTORICAL GRANT; no current usable ability established here.
+  Old purpose: Historically, tied to Viewer Heartbeat/Drops viewing-activity reporting.
+  Drops are game rewards earned through eligible viewing.
+  Example: the old rewards system used viewing activity to support a game
+  reward.
+  Today: Do not treat it as permission to fetch all of someone's watch history. Its
+  exact current working behavior is not documented in the current scope catalog.
+  Sources: [1], [6]; historical context [8].
+
+099. whispers:read
+  Status: HISTORICAL GRANT; no current usable ability established here.
+  Old purpose: Historically, receive whisper events through PubSub, Twitch's retired
+  event-delivery system.
+  Example: an old app could receive a notice about a private Twitch
+  message.
+  Today: PubSub shut down on April 14, 2025. The current EventSub whisper permissions
+  are user:read:whispers or user:manage:whispers; they do not expose a complete
+  historical inbox.
+  Sources: [5].
+
+END OF THE 99 ENTRY MAIN INVENTORY
+
+Appendix: two names from the original file, not in either reported grant
+
+These are preserved for reference. They are not additional granted scopes
+and are not part of the numbered main inventory.
+
+A. whispers:edit
+  Status: OLD NAME, NOT IN THE SUPPLIED GRANTS.
+  Old purpose: Send private Twitch whispers in older integrations.
+  Example: An old bot sent a private reply.
+  Today: Do not rely on it for the modern Send Whisper action, which requires
+  user:manage:whispers. The current official scope catalog does not list
+  whispers:edit as a modern sending permission. It does not imply access to
+  old whisper history. Sources: [1], [2], [5].
+
+B. user:edit:follows
+  Status: RETIRED ACTION, NOT IN THE SUPPLIED GRANTS.
+  Old purpose: Follow or unfollow a channel as the authorizing user.
+  Example: An old app added a streamer to a user's followed list.
+  Today: Twitch retired the follow-write actions in July 2021. Do not claim
+  this permission enables following/unfollowing now. user:read:follows only
+  reads supported follow information; it does not replace follow-write.
+  Sources: [1], [7].
+
+Important corrections to the original descriptions
+
+- A scope name ending in manage/edit is not a promise of every imaginable
+  action on that object. The individual action documentation is decisive.
+- clips:edit creates live clips; it does not edit arbitrary existing clips.
+- user:edit changes supported profile description data, not the whole account.
+- channel:moderate maps to current ban/unban event notifications, not blanket
+  permission to execute all modern moderation actions.
+- Whisper event permissions do not reveal a complete historical inbox or
+  sent-message archive.
+- user:edit:broadcast is not a universal superset of user:read:broadcast.
+- Reading moderator-role/VIP/ban event categories is not automatically the
+  same permission as querying a full list through a different action.
+- Ad management here includes limited snoozing, not arbitrary ad scheduling.
+- Old scope spellings are preserved without claiming they are modern aliases.
+
+Sources
+
+[1] Twitch official OAuth scope catalog
+https://dev.twitch.tv/docs/authentication/scopes/
+
+[2] Twitch official API reference; each action specifies exact token, identity,
+role, field, eligibility, and rate-limit requirements
+https://dev.twitch.tv/docs/api/reference/
+Useful exact sections:
+https://dev.twitch.tv/docs/api/reference/#update-user
+https://dev.twitch.tv/docs/api/reference/#create-clip
+https://dev.twitch.tv/docs/api/reference/#get-stream-markers
+https://dev.twitch.tv/docs/api/reference/#update-user-extensions
+https://dev.twitch.tv/docs/api/reference/#send-whisper
+https://dev.twitch.tv/docs/api/reference/#send-chat-message
+https://dev.twitch.tv/docs/api/reference/#snooze-next-ad
+https://dev.twitch.tv/docs/api/reference/#get-channel-guest-star-settings
+
+[3] Twitch EventSub subscription types and authorization requirements
+https://dev.twitch.tv/docs/eventsub/eventsub-subscription-types/
+
+[4] Twitch OpenID Connect sign-in documentation
+https://dev.twitch.tv/docs/authentication/getting-tokens-oidc/
+
+[5] Twitch PubSub shutdown and migration information
+https://dev.twitch.tv/docs/pubsub/
+
+[6] Twitch announcement: legacy v5 API shutdown details and timeline
+https://discuss.dev.twitch.com/t/legacy-twitch-api-v5-shutdown-details-and-timeline/32649
+
+[7] Twitch announcement: retirement of create/delete follows actions
+https://discuss.dev.twitch.com/t/deprecation-of-create-and-delete-follows-api-endpoints/32351/1
+
+[8] Twitch's original Drops and Viewer Heartbeat explanation
+https://blog.twitch.tv/en/2017/02/22/introducing-drops-41543258085e/
+
+[9] User-supplied diagnostic report, generated October 4, 2026 at 14:09:48 UTC.
+Only scope names and account labels were used for the inventory. Credentials,
+stream keys, request headers, token values, and private raw responses are
+not included in this guide. The report itself should be handled privately.

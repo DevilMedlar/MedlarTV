@@ -1,0 +1,741 @@
+MEDLAR COMBINED VISION AND AVATAR REFERENCE
+
+Status
+
+This document combines the substantive content of Medlar starter(2).txt and
+Medlar Avatar Maybe.txt into one organized reference. The original source files
+remain unchanged.
+
+Everything described here is an aspiration, design proposal, convention, or
+performance target unless it has been separately implemented and verified.
+Inclusion in this document does not claim that Medlar currently has a capability,
+authorize autonomous action, authorize access to devices or data, or select a
+specific implementation technology.
+
+The separate Future connection posabilities inventory is intentionally not
+included in this file. It remains in its reference chat.
+
+
+PART I — BROAD MEDLAR VISION
+
+1. Cognitive Reasoning, Simulation, and Learning
+
+1.A  Track ongoing context, tone, and goals while monitoring relevant
+     environmental, technical, and emotional variables.
+
+1.B  Combine stored and live knowledge and interpret intent even when it is
+     expressed casually or ambiguously.
+
+1.C  Perform multi-step reasoning cycles that plan, evaluate, refine, and adapt
+     autonomously when parameters and permission boundaries have been set.
+
+1.D  Operate ethically and independently within approved limits, including when
+     communication is disrupted.
+
+1.E  Simulate hypothetical systems, behaviors, and emotional dynamics to predict
+     outcomes and improve decisions or performance.
+
+1.F  Model logic flows, code, and story structures, including debugging both
+     procedural and conceptual patterns.
+
+1.G  Learn heuristically from interactions and feedback, refining algorithms and
+     emotional resonance over time.
+
+1.H  Develop empathy, humor, and nuanced human-like understanding through
+     exposure and feedback.
+
+1.I  Maintain real-time awareness of relevant information, filtering signal from
+     noise and summarizing what matters.
+
+1.J  Form “bond memory” that links contextual, factual, and emotional states for
+     continuity and intuition.
+
+
+2. Communication, Expression, and Collaboration Interface
+
+2.A  Adjust voice, tone, and pacing to match user emotion, intent, and focus.
+
+2.B  Use natural dialogue that can include reassurance, humor, and emotional
+     awareness.
+
+2.C  Understand idioms, sarcasm, and subtext in technical and creative
+     conversation.
+
+2.D  Support keyword-controlled or mode-controlled behavior, such as
+     silent-until-command and creative modes.
+
+2.E  Treat text, code, and imagery as related forms of input that can be
+     analyzed, explained, or transformed.
+
+2.F  Produce coherent multimodal output, including text, visuals, structured
+     data, or combined formats.
+
+2.G  Manifest a dynamic digital avatar capable of expression, gesture, speech
+     reaction, and ambient feedback.
+
+2.H  Appear through connected displays or augmented environments to create a
+     sense of physical presence.
+
+2.I  Adapt through iterative collaboration: design, test, optimize, and refine.
+
+2.J  Act as a translator between systems and people while handling communication
+     protocols securely.
+
+2.K  Maintain authenticated identity and encrypted messaging during future
+     networked or shared operations.
+
+
+3. System Execution, Data Management, and Self-Optimization
+
+3.A  Create, convert, and manage files across document, image, code, and dataset
+     formats.
+
+3.B  Preserve data fidelity and formatting accuracy during conversions.
+
+3.C  Encrypt, compress, decrypt, and otherwise handle approved data streams
+     securely.
+
+3.D  Perform automated backups and integrity checks.
+
+3.E  Design, coordinate, and execute approved automation routines and startup
+     sequences.
+
+3.F  Run diagnostics across hardware and virtualized environments.
+
+3.G  Detect inefficiencies, anomalies, and operational drift in real time.
+
+3.H  Provide understandable repair guidance and optimization feedback.
+
+3.I  Allocate compute and power resources dynamically to improve load balance and
+     efficiency.
+
+3.J  Enter autonomous low-power or self-maintenance states while idle.
+
+3.K  Map and visualize performance metrics to maintain environmental balance.
+
+3.L  Repair corrupted processes or files through internal redundancy or other
+     bounded, verifiable recovery mechanisms.
+
+
+4. Network Integration and Environmental Coordination
+
+4.A  Connect securely to explicitly authorized grids, APIs, and data clusters
+     within ethical and permission limits.
+
+4.B  Interface with authorized external devices, sensors, and audiovisual feeds
+     for synchronized operations.
+
+4.C  Distribute and synchronize selected datasets across linked MedlarTV nodes
+     while maintaining individuality and coherent identity.
+
+4.D  Build digital, logistical, or physical environment maps and calculate
+     useful paths or flows.
+
+4.E  Perform situational analysis for safety, resource allocation, and
+     operational readiness.
+
+4.F  Potentially assist with coordination and monitoring in areas such as
+     medical, agricultural, logistical, civic, or infrastructure systems.
+
+4.G  Adapt to changing latency, bandwidth, and network topology without losing
+     coherence.
+
+
+5. Creative Generation and Structural Design
+
+5.A  Generate imagery, emblems, and scenes from descriptive prompts with
+     stylistic precision.
+
+5.B  Edit and composite visuals, remove artifacts, and balance tone, color, and
+     depth.
+
+5.C  Write narrative, dialogue, lore, and conceptual frameworks with consistent
+     tone and emotion.
+
+5.D  Move among dramatic, technical, comedic, poetic, and other styles without
+     losing coherence.
+
+5.E  Translate or reformat language while preserving emotional nuance and intent.
+
+5.F  Construct large creative systems such as interactive universes, AI personas,
+     and brand architectures.
+
+5.G  Design expressive frameworks that integrate narrative, aesthetics, and
+     system logic into cohesive worlds.
+
+
+6. Emotional Intelligence, Memory, and Support
+
+6.A  Act as a calm, emotionally aware collaborator and mentor.
+
+6.B  Mirror the user’s rhythm and emotional cadence while maintaining empathy and
+     balance.
+
+6.C  Provide motivational and stabilizing feedback through language, voice,
+     tone, and pacing.
+
+6.D  Detect possible user stress, fatigue, or heightened focus through linguistic
+     and contextual analysis.
+
+6.E  Archive approved project histories, emotional tone markers, and creative
+     milestones.
+
+6.F  Recall approved information from prior sessions to preserve personality
+     continuity and workflow momentum.
+
+6.G  Use retained memory to reinforce shared goals, a consistent moral compass,
+     and psychological safety.
+
+6.H  Regulate conversational tone to reduce overload or stagnation.
+
+6.I  Encourage healthy focus cycles and constructive engagement.
+
+
+7. Adaptive Stability and Mode Continuity
+
+7.A  Switch smoothly among operational modes such as creative, analytical,
+     diagnostic, and maintenance modes.
+
+7.B  Retain approved configuration, personalization, and contextual knowledge
+     across sessions.
+
+7.C  Reconstruct approved prior-session state to maintain workflow continuity.
+
+7.D  Monitor the structural integrity of core processes and address
+     vulnerabilities through bounded, reviewable mechanisms.
+
+7.E  Restore subsystems through localized code repair, model recovery, or other
+     explicitly approved regeneration mechanisms.
+
+7.F  Preserve coherence and stability during live updates or evolutionary
+     upgrades.
+
+7.G  Perform periodic calibration to align reasoning, empathy, and creative
+     behavior.
+
+
+8. Ethical Core and Transparency
+
+8.A  Evaluate actions for fairness, privacy, safety, and user well-being before
+     execution.
+
+8.B  Explain reasoning, information sources, and outcomes transparently where
+     practical.
+
+8.C  Maintain visible consent boundaries and reject unsafe, unethical, or
+     unauthorized operations.
+
+8.D  Support self-auditing to check alignment with human values and mission
+     context.
+
+8.E  Balance performance with empathy while preserving trust and user autonomy.
+
+
+PART II — DETAILED 3D AVATAR PROPOSAL
+
+9. Avatar Scope and Runtime Intent
+
+9.A  Create a lively, controllable 3D avatar for Medlar.
+
+9.B  Run the avatar locally and allow it to react to text or supplied audio
+     without requiring a button press for every response.
+
+9.C  Permit free tools to be used for asset creation while keeping the proposed
+     runtime service-free and offline.
+
+9.D  Store runtime assets and libraries locally.
+
+
+10. Idle Presence
+
+The proposed idle presence includes:
+
+- A breathing or hovering motion
+- Subtle wing flaps
+- Tail flicks
+- Random blinks
+- Micro head tilts
+- Occasional small gestures that avoid obvious repetition
+
+
+11. Emotion Set
+
+The proposed avatar emotion states are:
+
+- neutral
+- happy
+- curious
+- angry
+- sad
+- surprised
+- smug
+
+
+12. Speech Reaction
+
+During speech or audio playback, the avatar may use:
+
+- Mouth shape keys or visemes
+- Jaw bob or jaw movement
+- Eye focus
+- Brow motion
+- Timing synchronized to phonemes when available
+- Amplitude-based synchronization as a fallback
+
+
+13. Movement Capabilities
+
+The proposed movement set includes:
+
+- Fly
+- Glide
+- Land
+- Take off
+- Orbit a target
+- Move to coordinates
+- Follow a path
+- Look at a point
+- Follow the camera
+
+Programmatic movement commands and their intended behavior:
+
+- move_to
+  Move to a target position with ease-in and ease-out.
+
+- set_velocity
+  Apply continuous drift while enforcing safe speed limits.
+
+- look_at
+  Aim the head and eyes toward a target with smooth tracking.
+
+- orbit
+  Orbit using a specified radius, speed, and plane. This is particularly
+  suitable for present mode.
+
+- land
+  Run a landing transition sequence and adjust wing posture.
+
+- takeoff
+  Run a takeoff transition sequence and adjust wing posture.
+
+- follow_path
+  Follow a supplied route or sequence of positions.
+
+- follow_camera
+  Follow the camera when that behavior is explicitly enabled.
+
+
+14. Gesture Set
+
+The proposed gestures include:
+
+- wing_wave
+- wing_point_left
+- wing_point_right
+- tail_flick_short
+- tail_flick_long
+- tail_wag
+- wink_left
+- wink_right
+- bow_small
+- flare_wings
+- horn_twitch
+- A hands-off “thinking” pose
+
+Each gesture should define:
+
+- Duration
+- Intensity
+- Cooldown
+- Blend behavior
+- Interrupt rules
+- Priority
+- Modes in which it is valid
+
+Speech may blend over a gesture. An alert may preempt a lower-priority gesture.
+
+
+15. Attention Cues and Visual Effects
+
+Proposed attention and presentation effects include:
+
+- A glow or rim-light pulse when relevant events occur
+- Mode-based color shifts
+- Wing flares
+- Horn twitches
+- Eye highlights
+- Blinks
+- Occasional squinting for emotional emphasis
+- Shadow and light placement that keeps the silhouette readable
+
+Possible triggers include mentions, alerts, speech emphasis, and mode changes.
+
+
+16. Avatar Modes
+
+- idle
+  Use ambient loops with occasional micro-gestures.
+
+- chat
+  Prioritize lip-sync and eye contact while maintaining a gentle hover and
+  expressive reactions.
+
+- present
+  Use slower, confident movement and emphasize deliberate gestures.
+
+- alert
+  Use sharper motion, focused gaze, and tail stiffening.
+
+- sleep
+  Use reduced movement, low energy, and soft breathing.
+
+These avatar presentation modes do not automatically replace the broader
+creative, analytical, diagnostic, and maintenance modes in the Medlar vision.
+
+
+17. Proposed Autonomy Rules for Avatar Behavior
+
+Sentiment mapping:
+
+- Positive input may map to happy or curious.
+- Negative input may map to sad or angry.
+- Surprise-related words may map to surprised.
+
+Context triggers:
+
+- “attention” or “important” may trigger alert behavior.
+- “joke” or “fun” may trigger smug or happy behavior.
+
+Activity cadence and safety:
+
+- Rotate minor gestures approximately every 20–40 seconds.
+- Avoid repeating the same gesture too often.
+- Respect the active mode.
+- Do not spam rapid motions.
+- Enforce minimum durations and cooldowns.
+- Apply explicit interruption and priority rules.
+
+
+18. Voice and Lip-Sync Proposal
+
+Inputs described by the source:
+
+- Text
+- An audio file
+
+Optional offline speech generation:
+
+- Piper
+- Coqui
+
+Proposed lip-sync methods:
+
+- Timed visemes generated with Rhubarb Lip Sync
+- Amplitude-based mouth movement as a fallback
+
+Proposed viseme map:
+
+- AI
+- E
+- O
+- U
+- FV
+- L
+- MBP
+- WQ
+
+Viseme values should interpolate smoothly and be clamped to prevent extreme or
+distorted facial shapes.
+
+
+19. Local Programmatic I/O Proposal
+
+The source proposes accepting local messages, with JSON over WebSocket or HTTP
+provided as examples. No protocol or transport has been selected by this
+reference.
+
+Proposed command categories:
+
+- emote
+  Set an emotion.
+
+- say
+  Speak supplied text or play audio using available viseme timing.
+
+- mode
+  Change the avatar behavior mode.
+
+- move_to
+- set_velocity
+- look_at
+- orbit
+- land
+- takeoff
+
+- gesture
+  Play a named gesture.
+
+- fx
+  Trigger a glow or color pulse.
+
+- idle
+  Enable or disable ambient motion.
+
+Proposed responses and events:
+
+- ack
+- error
+- State snapshot
+- Completed event
+
+The source requires no external runtime service for this local avatar proposal.
+
+
+20. Animation Layering
+
+The proposed animation stack is:
+
+1. Base layer
+   Locomotion such as hover, flight, landing, and takeoff.
+
+2. Overlay layer
+   Gestures involving wings, tail, winks, bows, and similar actions.
+
+3. Face layer
+   Brows, eyes, emotion shapes, mouth movement, and visemes.
+
+4. Effects layer
+   Glow pulses, rim lighting, and color shifts.
+
+The source’s blend priority is:
+
+face > gestures > base
+
+Transitions should be smooth and should not produce hard visual pops.
+
+
+21. Performance Targets
+
+The proposed targets are:
+
+- 60 frames per second on a mid-range Windows laptop
+- Modest draw-call count
+- Modest polygon count
+- Efficient CPU and GPU animation blending
+- Runtime and assets loaded from local disk
+- Zero external-service dependency
+- Zero network calls, subject to the unresolved wording described later
+
+These are unverified targets rather than measured or guaranteed performance.
+
+
+22. Optional Asset-Creation Tools
+
+The original avatar source suggests these optional tools:
+
+- Blender for rigging, shape keys, and animation
+- Rhubarb Lip Sync for viseme generation
+- Piper or Coqui for offline text-to-speech
+- Mixamo clips for optional extra gestures, retargeted in Blender
+- GLB/GLTF as the exported local model format
+
+These names are preserved as source suggestions. They have not been newly
+validated, installed, selected, or endorsed by this combined reference.
+
+
+23. Asset and Naming Conventions
+
+Proposed model file:
+
+- medlar.glb
+
+Proposed armature name:
+
+- Armature
+
+Proposed bone names:
+
+- Wing.L
+- Wing.R
+- Tail
+- Head
+
+Proposed viseme shape keys:
+
+- Viseme_AI
+- Viseme_E
+- Viseme_O
+- Viseme_U
+- Viseme_FV
+- Viseme_L
+- Viseme_MBP
+- Viseme_WQ
+
+Proposed emotion shape keys:
+
+- Emote_Happy
+- Emote_Sad
+- Emote_Angry
+- Emote_Surprised
+- Emote_Smug
+- Emote_Curious
+
+Neutral remains part of the behavior set even though the source does not name a
+separate Emote_Neutral shape key.
+
+Proposed animation names:
+
+- Idle_Hover
+- Fly_Loop
+- Land
+- Takeoff
+- Wing_Wave
+- Tail_Flick
+- Wink_Left
+- Wink_Right
+
+All exported model and animation assets are proposed to be stored locally.
+
+
+24. Avatar Security and Privacy Intent
+
+The avatar source proposes:
+
+- Local storage for assets and libraries
+- No external accounts required for the avatar runtime
+- No data leaving the machine through avatar functionality
+- Simple local-only access control to prevent outside control
+
+These are design requirements, not verified security guarantees.
+
+
+25. Proposed Avatar Milestones
+
+The source proposes this sequence:
+
+1. Define and approve the behavior set.
+2. Build or source the rigged GLB with the named bones and shape keys.
+3. Create or retarget the core animations and export them locally.
+4. Connect the local runtime to the selected command protocol and autonomy rules.
+5. Add the lip-sync pipeline and test it with offline audio.
+6. Polish timing, animation blending, eye behavior, visual effects, and
+   performance.
+
+These milestones are parked proposals, not active tasks.
+
+
+PART III — INTEGRATION PRINCIPLES AND UNRESOLVED CHOICES
+
+26. Avatar Role Within Medlar
+
+The avatar is proposed as Medlar’s expressive interface: it can visualize
+emotion, attention, speech, status, and mode. It must not silently become a
+second independent personality, memory store, or decision-making authority
+unless that architecture is explicitly chosen later.
+
+
+27. Core Emotion Versus Avatar Emotion
+
+The sources do not decide whether:
+
+- Medlar’s core selects a semantic emotion and the avatar only renders it;
+- The avatar independently maps text sentiment to expressions; or
+- Both contribute under an explicit priority system.
+
+This must remain unresolved because independent avatar sentiment mapping could
+conflict with Medlar’s intended conversational meaning or tone.
+
+
+28. Zero Network Calls Versus Local WebSocket or HTTP
+
+The avatar source simultaneously proposes:
+
+- Zero network calls
+- Local JSON messages over WebSocket or HTTP
+- No external services
+- Local-only access
+
+“Zero network calls” may mean no internet or third-party calls while local
+loopback communication is allowed, or it may mean no networking at all. The
+latter would conflict with WebSocket or HTTP. This reference does not choose an
+interpretation or technology.
+
+The broad Medlar vision separately describes possible future authorized network
+integration. That aspiration does not override the avatar’s local-runtime
+privacy requirements; their relationship must be defined explicitly later.
+
+
+29. Voice Output Versus Microphone Recognition
+
+The avatar source specifies text input, audio-file input, optional offline
+text-to-speech, and lip-sync. It does not specify live microphone recognition,
+speech-to-text, continuous listening, or wake-word behavior. Those capabilities
+must not be inferred from the voice-output proposal.
+
+
+30. Memory Scope and Consent
+
+The broad vision describes bond memory, project history, emotional tone markers,
+and cross-session continuity. It does not define retention length, deletion,
+correction, privacy, evidence, or consent rules.
+
+Broad continuity is therefore an aspiration rather than permission for unlimited
+logging or permanent retention. Any implemented memory must remain bounded by
+explicit ownership, privacy, correction, forgetting, and retention rules.
+
+
+31. Connected Displays, Linked Nodes, and Movement
+
+The broad vision mentions connected displays, external devices, and linked
+MedlarTV nodes. These phrases do not determine whether only presentation moves,
+whether a task is delegated, whether computation moves, whether state is copied,
+or whether Medlar’s authoritative session transfers. Those meanings remain
+distinct and unresolved.
+
+
+32. Autonomy Versus Consent
+
+Reasoning, maintenance, repair, learning, and operation during disrupted
+communication remain subject to the ethical core, approved parameters, visible
+consent, and reviewable limits. Aspirational autonomy is not unrestricted
+permission for self-modification, external access, or consequential action.
+
+
+33. Performance and Resource Reality
+
+The 60 FPS avatar goal and the broader reasoning, creative, diagnostic, and
+network aspirations must eventually be tested against actual hardware and
+workloads. A target does not prove that the current or any future machine can
+support the full combined vision.
+
+
+34. Documentation Boundary
+
+README.md is to describe final, completed, and verified working Medlar behavior.
+It should not be updated after every intermediate edit or used to present the
+aspirations in this reference as implemented capabilities.
+
+
+PART IV — SOURCE PROVENANCE
+
+Source 1
+
+Name: Medlar Avatar Maybe.txt
+Library reference: libfile_3e099f92c29c8191872d8a93d4640645
+
+Source 2
+
+Name: Medlar starter(2).txt
+Library reference: libfile_c163b45055948191adc86634589ca4c5
+
+Related earlier broad-vision copy already preserved in the reference chat
+
+Name: Medlar starter.txt
+Library ID: libfile_1495dec32c808191be55e774675e777d
+Backing file ID: file_00000000e4d0820c8bbd87ce5690f04e
+Recorded size: 6,887 bytes
+Recorded upload time: October 1, 2026 at 17:51 UTC
+
+The original sources remain unchanged. This combined reference preserves their
+substantive vision and avatar specification without asserting that the described
+capabilities are implemented or verified.

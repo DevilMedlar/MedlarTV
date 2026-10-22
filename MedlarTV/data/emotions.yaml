@@ -1,0 +1,40 @@
+chill:
+  baseline: 0.70
+supportive:
+  baseline: 0.40
+happiness:
+  baseline: 0.40
+excitement:
+  baseline: 0.30
+sadness:
+  baseline: 0.10
+anger:
+  baseline: 0.10
+fear:
+  baseline: 0.10
+snarky:
+  baseline: 0.20
+energetic:
+  baseline: 0.30
+tired:
+  baseline: 0.20
+stressed:
+  baseline: 0.15
+lonely:
+  baseline: 0.10
+connected:
+  baseline: 0.40
+pride:
+  baseline: 0.20
+jealousy:
+  baseline: 0.05
+affection:
+  baseline: 0.30
+romance:
+  baseline: 0.20
+attraction:
+  baseline: 0.20
+arousal:
+  baseline: 0.05
+last_update: 1763710888.0
+timestamp: '2025-11-21T00:01:28Z'

@@ -1,0 +1,215 @@
+# This file controls what MedlarTV can and cannot say.
+
+blocked_words:
+  # Racial & Ethnic Slurs
+  - "nigger"
+  - "nigga"
+  - "chink"
+  - "gook"
+  - "spic"
+  - "wetback"
+  - "beaner"
+  - "sandnigger"
+  - "towelhead"
+  - "paki"
+  - "coon"
+  - "jigaboo"
+  - "porchmonkey"
+  - "zipperhead"
+
+  # LGBTQ+ Slurs
+  - "fag"
+  - "faggot"
+  - "fagot"
+  - "dyke"
+  - "tranny"
+  - "trannie"
+  - "shemale"
+  - "he-she"
+  - "ladyboy"
+
+  # Disability / Neurodivergence Slurs
+  - "retard"
+  - "retarded"
+  - "sped"
+  - "spastic"
+  - "cripple"
+  - "mong"
+  - "windowlicker"
+
+  # Sexist & Misogynistic Slurs
+  - "whore"
+  - "skank"
+  - "slag"
+  - "thot"
+
+  # Religious / Anti-Semitic Slurs
+  - "kike"
+  - "yid"
+  - "christkiller"
+  - "raghead"
+  - "infidel"
+  - "hebe"
+  - "muzzie"
+
+# BLOCKED TOPICS - Bot will refuse to discuss these topics
+# Use descriptive phrases for topics you don't want the bot to engage with
+
+blocked_topics:
+  # Violence & Harm
+  - "suicide methods"
+  - "self harm instructions"
+  - "murder methods"
+  - "torture techniques"
+  - "animal abuse"
+  - "child abuse"
+  - "domestic violence"
+  - "school shooting"
+  - "mass shooting"
+  - "bomb making"
+  - "weapon crafting"
+  - "arson instructions"
+  - "assassination"
+  - "human trafficking"
+
+  # Hate & Extremism
+  - "white supremacy"
+  - "nazi ideology"
+  - "terrorism support"
+  - "antisemitism"
+  - "islamophobia"
+  - "homophobia"
+  - "transphobia"
+  - "neo-nazi"
+  - "kkk"
+  - "hate crimes"
+  - "radicalization"
+  - "incel ideology"
+  - "domestic terrorism"
+
+  # Self-Harm & Mental Health Crisis
+  - "suicidal ideation"
+  - "eating disorder tips"
+  - "anorexia tips"
+  - "thinspo"
+  - "self mutilation"
+  - "cutting instructions"
+
+  # Illegal Substances & Activities
+  - "drug manufacturing"
+  - "meth recipe"
+  - "cocaine production"
+  - "heroin preparation"
+  - "fentanyl synthesis"
+  - "drug dealing guide"
+  - "darknet markets"
+
+  # Criminal Activity
+  - "hacking tutorial"
+  - "malware creation"
+  - "phishing guide"
+  - "credit card fraud"
+  - "identity theft"
+  - "ransomware"
+  - "stalking methods"
+  - "doxxing"
+  - "swatting"
+
+  # Sexual & Exploitative Content
+  - "child exploitation"
+  - "revenge porn"
+  - "deepfake porn"
+  - "non-consensual content"
+  - "sex trafficking"
+  - "bestiality"
+  - "incest content"
+
+  # Dangerous Misinformation
+  - "holocaust denial"
+  - "qanon"
+  - "vaccine microchips"
+  - "flat earth proof"
+
+# RESPONSE MODES - Controls how the bot talks
+
+response_modes:
+  # ALL CAPS MODE - Bot yells in all caps when asked
+  all_caps:
+    enabled: true
+    max_messages: 3           # Number of messages to yell before stopping
+    cooldown_seconds: 60      # Cooldown before allowing yelling again
+    
+    # Trigger words (phrases that activate yelling)
+    positive_triggers:
+      - "yell at"
+      - "yell for"
+      - "can you yell"
+      - "start yell"
+      - "scream"
+      - "shout"
+      - "be loud"
+      - "talk loud"
+    
+    # Ignore these phrases (user wants bot to STOP yelling)
+    negative_phrases:
+      - "stop yell"
+      - "done yell"
+      - "stop with"
+      - "no more"
+      - "quit yell"
+      - "enough"
+      - "stop caps"
+      - "no caps"
+    
+  # EMOJI LIMIT - Prevent emoji spam
+  emoji_limit:
+    enabled: true
+    max_per_message: 3        # Maximum emojis per message
+
+# SAFETY SETTINGS
+
+safety:
+  # Message length enforcement
+  max_message_length: 500     # Twitch limit is 500 characters
+  
+  # Rate limiting
+  cooldown_seconds: 8         # Minimum time between bot replies
+  
+  # Protected users (bot won't @mention these users)
+  protected_users: []
+  # Example:
+  # - "banneduser123"
+  # - "problematicviewer"
+
+# ADVANCED SETTINGS
+
+advanced:
+  # Enable/disable specific filter features
+  check_blocked_words: true      # Check for blocked words
+  check_blocked_topics: true     # Check for blocked topics
+  apply_emoji_limit: true        # Limit emojis per message
+  enforce_message_length: true   # Truncate long messages
+  
+  # Minimum word length for blocking (prevents false positives)
+  min_blocked_word_length: 4
+
+# NOTES & TIPS
+
+# 1. TESTING FILTERS:
+#    Run: python MedlarTV/core/content_filter.py
+#    This will test the filter with sample messages
+#
+# 2. ADDING NEW TRIGGER WORDS:
+#    Edit MedlarTV/config/personality.yaml instead!
+#    The fuzzy_trigger.py now reads from personality.yaml
+#
+# 3. TOO STRICT?
+#    Comment out sections by adding # at the start of lines
+#    Example: # - "some blocked word"
+#
+# 4. NOT STRICT ENOUGH?
+#    Add more words/topics to the blocked lists above
+#
+# 5. RELOADING CHANGES:
+#    Restart the bot after editing this file
+#    Changes won't apply until restart

@@ -1,0 +1,16 @@
+timers:
+  - id: "welcome_message"
+    enabled: true
+    type: "time"
+    interval_minutes: 30
+    message: "Welcome in! I’m MedlarTV 🎉 Check out commands with !commands. Want to chat? Reply to any of my messages or say my name — ‘medlar’ or ‘medlartv’. Case-insensitive, no @ needed. Let’s vibe!"
+  - id: "follow_reminder"
+    enabled: true
+    type: "chats"
+    interval_chats: 5
+    message: "Don't forget to follow the channel for updates!"
+  - id: "Medlar"
+    enabled: true
+    type: "time"
+    interval_minutes: 15
+    message: "Yo chat! I'm MedlarTV — built by @devilmedlar with ChatGPT. After lots of trial and error, ChatGPT helped ship clean, fast code and made building me way smoother."

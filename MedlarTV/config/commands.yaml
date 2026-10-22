@@ -1,0 +1,333 @@
+commands:
+  # GENERAL COMMANDS  
+  ping:
+    response: "Pong 🏓 — I hear you, {user}!"
+    allowed_roles: ["everybody"]
+  
+  status:
+    response: "System nominal ⚙️ | Connected as {nick}"
+    allowed_roles: ["everybody"]
+  
+  time:
+    response: "Fetching time..."
+    allowed_roles: ["everybody"]
+    description: "Get current time for a location"
+    usage: "!time <zone/country/city>"
+
+  worldclock:
+    response: "World clock summary..."
+    allowed_roles: ["everybody"]
+    description: "World clock summary across major cities"
+    usage: "!worldclock"
+
+  timezones:
+    response: "Listing timezones..."
+    allowed_roles: ["everybody"]
+    description: "List available timezones"
+    usage: "!timezones [filter]"
+
+  search:
+    response: "Searching..."
+    allowed_roles: ["everybody"]
+    description: "Web search via DuckDuckGo"
+    usage: "!search <query>"
+
+  wiki:
+    response: "Looking up Wikipedia..."
+    allowed_roles: ["everybody"]
+    description: "Wikipedia lookup"
+    usage: "!wiki <topic>"
+
+  tip:
+    response: "You can tip to DevilMedlar by copy and paste this: https://soundalerts.com/@devilmedlar"
+    allowed_roles: ["everybody"]
+    description: "Link to tip page"
+    usage: "!tip"
+
+  roulette:
+    response: "Plays Russian Roulette with your trusty revolver."
+    allowed_roles: ["everybody"]
+    description: "Play Russian Roulette"
+    usage: "!roulette"
+
+  8ball:
+    response: "Returns a Magic 8 Ball response to your question."
+    allowed_roles: ["everybody"]
+    description: "Magic 8 Ball response"
+    usage: "!8ball <question>"
+
+  coinflip:
+    response: "Head or Tails — Find it out by flipping the coin."
+    allowed_roles: ["everybody"]
+    description: "Flip a coin"
+    usage: "!coinflip"
+
+  diceroll:
+    response: "Returns a random dice roll, defaults to 6-sided."
+    allowed_roles: ["everybody"]
+    description: "Roll a die"
+    usage: "!diceroll [sides]"
+
+  catfact:
+    response: "Learn something new about cats!"
+    allowed_roles: ["everybody"]
+    description: "Random cat fact"
+
+  dogfact:
+    response: "Learn something new about dogs!"
+    allowed_roles: ["everybody"]
+    description: "Random dog fact"
+
+  funfact:
+    response: "Returns a random fun fact."
+    allowed_roles: ["everybody"]
+    description: "Random fun fact"
+
+  joke:
+    response: "Returns a random joke."
+    allowed_roles: ["everybody"]
+    description: "Random joke"
+
+
+  chucknorris:
+    response: "Learn something about the man, the myth, the legend."
+    allowed_roles: ["everybody"]
+    description: "Random Chuck Norris joke"
+
+  uptime:
+    response: "${channel} has been streaming for 2 hours 20 mins"
+    allowed_roles: ["everybody"]
+    description: "Show current stream uptime"
+    usage: "!uptime"
+
+  watchtime:
+    response: "${user} has spent ${user.time_online['0 seconds']} watching ${channel}"
+    allowed_roles: ["everybody"]
+    description: "Show viewer watch time (session)"
+    usage: "!watchtime"
+
+  accountage:
+    response: "${user} was created 1 year 5 months 27 days 1 hour ago."
+    allowed_roles: ["everybody"]
+    description: "Show a user's account age"
+    usage: "!accountage [username]"
+
+  followage:
+    response: "${user1} has been following ${user2} for 1 year 5 months 27 days 1 hour"
+    allowed_roles: ["everybody"]
+    description: "Show how long a user has followed the channel"
+    usage: "!followage [username]"
+
+
+  death:
+    response: "Has died $(count death) times devilmeSAD"
+    allowed_roles: ["everybody"]
+    description: "Increment death counter"
+
+  deathreset:
+    response: "Death Count has been set to $(count death 0) devilmeSUS"
+    allowed_roles: ["pilot", "mod"]
+    description: "Reset death counter"
+
+  death#:
+    response: "DevilMedlar has died $(getcount death) so far! devilmeRAGE"
+    allowed_roles: ["everybody"]
+    description: "Show deaths so far"
+
+  dadjoke:
+    response: "Returns a random dad joke."
+    allowed_roles: ["everybody"]
+    description: "Random dad joke"
+
+  luck:
+    response: "${user.name} is ${random(0-100)}% lucky."
+    allowed_roles: ["everybody"]
+    description: "Luck percentage"
+
+  discord:
+    response: "https://discord.gg/6VwgAwu7y"
+    allowed_roles: ["everybody"]
+    description: "Discord invite link"
+
+  lurk:
+    response: "devilmeLURK ${user.name} is hiding from the demons! devilmeLURK"
+    allowed_roles: ["everybody"]
+    description: "Announce lurk message"
+
+  hello:
+    response: "Hey {user}! 👋 Ready for action."
+    allowed_roles: ["everybody"]
+  
+  hype:
+    response: "🔥 LET'S GOOOOO, {user}!"
+    allowed_roles: ["everybody"]
+  
+  medlar:
+    response: "Medlar mode engaged, {user} 😈"
+    allowed_roles: ["everybody"]
+  
+  commands:
+    response: "📋 Command catalog: https://DevilMedlar.github.io/medlar-commands-site/"
+    allowed_roles: ["everybody"]
+    description: "Link to the command catalog"
+
+  # MOOD & EMOTION COMMANDS
+  mood:
+    response: "Current mood: {mood} | All systems operational"
+    allowed_roles: ["everybody"]
+  
+  moodnumbers:
+    response: "{user} 📊 Mood breakdown incoming!"
+    allowed_roles: ["pilot", "copilot", "mod"]
+  
+  emotion:
+    response: "Checking current emotion..."
+    allowed_roles: ["everybody"]
+    description: "Show MedlarTV's dominant emotion"
+  
+  emotions:
+    response: "Analyzing emotional state..."
+    allowed_roles: ["everybody"]
+    description: "Show top 3 emotions with percentages"
+  
+  feelstate:
+    response: "Getting full emotional description..."
+    allowed_roles: ["everybody"]
+    description: "Show detailed emotional state"
+  
+  resetemotions:
+    response: "Resetting emotions to baseline..."
+    allowed_roles: ["pilot", "mod"]
+    description: "Reset all emotions to baseline (Pilot only)"
+  
+  # TRANSLATION COMMANDS
+  t:
+    response: "Translating..."
+    allowed_roles: ["everybody"]
+    description: "Translate text to another language"
+    usage: "!t <lang> <text> | Example: !t jp Hello!"
+  
+  tlang:
+    response: "Supported languages are dynamic. Examples: en, es, fr, de, it, pt, zh, ja, ko, ru, ar, sv, tr, tl, th, vi, nl, pl"
+    allowed_roles: ["everybody"]
+    description: "Show supported translation languages"
+  
+  thelp:
+    response: "!t <target language> <source language>: <text> | Example: !t jp en: Hello!  use !tlang to see supported languages"
+    allowed_roles: ["everybody"]
+    
+  # CO-PILOT MANAGEMENT
+  addcopilot:
+    response: "Co-Pilot {target} registered! Welcome to the squad! 🚀"
+    allowed_roles: ["pilot", "mod"]
+    description: "Add a co-pilot user"
+    usage: "!addcopilot username"
+  
+  removecopilot:
+    response: "Co-Pilot {target} unregistered. Thanks for flying with us! o7"
+    allowed_roles: ["pilot", "copilot", "mod"]
+    description: "Remove a co-pilot user"
+    usage: "!removecopilot username"
+  
+  listcopilots:
+    response: "Active Co-Pilots: {copilots}"
+    allowed_roles: ["everybody"]
+    description: "List all active co-pilots"
+  
+  # STREAM MANAGEMENT (Now handled by command_handlers.py)
+  streaminfo:
+    response: "Getting stream info..."
+    allowed_roles: ["everybody"]
+    description: "Get current stream information"
+  
+  title:
+    response: "Current stream title"
+    allowed_roles: ["pilot", "mod"]
+    description: "Get or set stream title"
+  
+  game:
+    response: "Current game/category"
+    allowed_roles: ["pilot", "mod"]
+    description: "Get or set stream category"
+  
+  # MODERATION COMMANDS
+  timeout:
+    response: "User timed out"
+    allowed_roles: ["pilot", "mod"]
+    description: "Timeout a user"
+    usage: "!timeout username duration reason"
+  
+  ban:
+    response: "User banned"
+    allowed_roles: ["pilot", "mod"]
+    description: "Ban a user"
+    usage: "!ban username reason"
+  
+  warn:
+    response: "Warning issued"
+    allowed_roles: ["pilot", "mod"]
+    description: "Warn a user"
+    usage: "!warn username"
+  
+  unwarn:
+    response: "Warning removed"
+    allowed_roles: ["pilot", "mod"]
+    description: "Remove warning from user"
+    usage: "!unwarn username"
+  
+  whitelist:
+    response: "Domain whitelisted"
+    allowed_roles: ["pilot", "mod"]
+    description: "Add domain to link whitelist"
+    usage: "!whitelist domain.com"
+  
+  modstats:
+    response: "Moderation statistics"
+    allowed_roles: ["pilot", "mod"]
+    description: "View moderation statistics"
+
+# ============================================================================
+# PERMISSION LEVELS EXPLAINED
+# ============================================================================
+#
+# allowed_roles: ["pilot"]                          - Broadcaster only
+# allowed_roles: ["pilot", "mod"]                   - Broadcaster & Mods
+# allowed_roles: ["pilot", "copilot"]               - Broadcaster & Co-pilots
+# allowed_roles: ["pilot", "copilot", "mod"]        - Broadcaster, Co-pilots & Mods
+# allowed_roles: ["pilot", "copilot", "mod", "vip"] - Broadcaster, Co-pilots, Mods & VIPs
+# allowed_roles: ["everybody"]                      - Everyone can use
+#
+# Note: "pilot" always has access to everything regardless of allowed_roles
+# ============================================================================
+
+# ============================================================================
+# NOTES ON UNIFIED COMMAND SYSTEM
+# ============================================================================
+#
+# Commands handled by command_handlers.py (new system):
+# - !ping (shows actual latency)
+# - !status (checks all systems)
+# - !emotion (shows dominant emotion)
+# - !emotions (shows top 3 with percentages)
+# - !feelstate (shows detailed description)
+# - !resetemotions (actually resets emotions)
+# - !streaminfo (shows live stream data)
+# - !title (view/set stream title)
+# - !game (view/set stream category)
+# - !help (dynamically generated list)
+# - !modhelp (dynamically generated mod list)
+#
+# These commands will be intercepted by the unified handler first.
+# If you want to override their behavior, remove them from COMMAND_REGISTRY
+# in command_handlers.py and they'll fall back to these YAML definitions.
+#
+# Commands still handled by YAML + twitch_listener.py:
+# - !hello, !hype, !medlar (simple responses)
+# - !mood, !moodnumbers (mood system)
+# - !t, !tlang, !thelp (translation)
+# - !addcopilot, !removecopilot, !listcopilots (co-pilot management)
+# - !timeout, !ban, !warn, !unwarn, !whitelist, !modstats (moderation)
+#
+# To add new simple commands, just add them here.
+# To add complex commands, add them to command_handlers.py
+# ============================================================================

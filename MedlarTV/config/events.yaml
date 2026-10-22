@@ -1,0 +1,51 @@
+events:
+  - name: welcome_any_viewer
+    trigger: viewer_arrived
+    filters:
+      username_not_in:
+        - streamelements
+        - fossabot
+        - soundalerts
+        - ignitionrage
+        - medlartv
+        - streamstickers
+        - pokemoncommunitygame
+        - homelesmidgets
+        - devilmedlar
+    effects:
+      - type: chat
+        message: "@{username} Welcome aboard!"
+      - type: play_sound
+        path: C:\Users\znorr\medlartv\Sounds\monster-growl.mp3
+        duration_ms: 3000
+  - name: welcome_homelesmidgets
+    trigger: viewer_arrived
+    filters:
+      username_equals: homelesmidgets
+    effects:
+      - type: chat
+        message: "!so homelesmidgets" 
+      - type: twitch_shoutout
+        target: homelesmidgets
+      - type: play_sound
+        path: C:\Users\znorr\medlartv\Sounds\ambulance.mp3
+        duration_ms: 12000
+  - name: welcome_kamobentz
+    trigger: viewer_arrived
+    filters:
+      username_equals: kamobentz
+    effects:
+      - type: chat
+        message: "!so kamobentz" 
+      - type: twitch_shoutout
+        target: kamobentz
+      - type: 
+        path: 
+        duration_ms: 12000
+ignored_users:
+  - streamelements
+  - fossabot
+  - soundalerts
+  - ignitionrage
+  - medlartv
+  - streamstickers

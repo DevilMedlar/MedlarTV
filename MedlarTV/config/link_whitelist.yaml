@@ -1,0 +1,44 @@
+# Domains in this list are allowed to be posted in chat
+
+whitelist:
+  # Twitch
+  - "twitch.tv"
+  - "clips.twitch.tv"
+  - "m.twitch.tv"
+  
+  # Social Media
+  - "twitter.com"
+  - "x.com"
+  - "youtube.com"
+  - "youtu.be"
+  - "instagram.com"
+  - "tiktok.com"
+  
+  # Gaming & Community
+  - "discord.gg"
+  - "discord.com"
+  - "reddit.com"
+  - "steamcommunity.com"
+  - "store.steampowered.com"
+  
+  # Media Sharing
+  - "imgur.com"
+  - "i.imgur.com"
+  - "giphy.com"
+  - "gfycat.com"
+  - "streamable.com"
+  
+  # Developer / Tech
+  - "github.com"
+  - "pastebin.com"
+  - "hastebin.com"
+  - "trae.ai"
+  
+  # Streaming Tools
+  - "streamlabs.com"
+  - "streamelements.com"
+  - "nightbot.tv"
+  - "soundalerts.com"
+  
+  # Add your custom domains below
+  # - "yourwebsite.com"

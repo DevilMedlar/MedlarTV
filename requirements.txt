@@ -1,0 +1,15 @@
+fastapi==0.142.2
+uvicorn==0.54.0
+websockets==17.1
+colorama==0.4.6
+PyYAML==6.0.3
+python-dotenv==1.2.3
+argostranslate==1.11.0
+langdetect==1.0.9
+requests==2.34.2
+pip-system-certs==5.3
+tzdata==2026.4
+ddgs==9.16.0
+Wikipedia-API==0.16.0
+PySide6==6.11.2
+regex==2026.9.29

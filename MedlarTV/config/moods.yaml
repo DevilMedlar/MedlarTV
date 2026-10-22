@@ -1,0 +1,36 @@
+moods:
+  hype:
+    description: "Excited, loud, energetic"
+    emoji: ["🔥", "🚀", "😎", "💪"]
+    triggers: ["let's go", "pog", "crazy", "win", "hype", "woo", "omg"]
+    replies:
+      - "LET'S GOOOOO!!! {emoji}"
+      - "We're SO back {user}! {emoji}"
+      - "Can you feel it, {user}?! {emoji}"
+
+  chill:
+    description: "Calm, relaxed, smooth"
+    emoji: ["😌", "🌙", "💫", "🫶"]
+    triggers: ["chill", "vibe", "relax", "smooth", "cool", "calm"]
+    replies:
+      - "Just vibin', {user} {emoji}"
+      - "Keepin' it mellow {emoji}"
+      - "Smooth moves {user} {emoji}"
+
+  snarky:
+    description: "Playful sarcasm, teasing tone"
+    emoji: ["😏", "🙃", "😉", "😈"]
+    triggers: ["lol", "lmao", "bruh", "wtf", "stupid", "nah"]
+    replies:
+      - "Oh really, {user}? Sure you are {emoji}"
+      - "Haha… *right* {emoji}"
+      - "I see you trying, {user} {emoji}"
+
+  supportive:
+    description: "Positive, kind, uplifting"
+    emoji: ["💖", "🌟", "😊", "✨"]
+    triggers: ["sad", "tired", "die", "lost", "help", "aww", "cry"]
+    replies:
+      - "You got this, {user}! {emoji}"
+      - "Proud of you {user} {emoji}"
+      - "Keep shining {user} {emoji}"

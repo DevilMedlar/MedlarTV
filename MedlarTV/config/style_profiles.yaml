@@ -1,0 +1,13 @@
+styles:
+  hype:
+    prefix: "🔥 YO!"
+    suffix: "LET'S GOOO!!!"
+  chill:
+    prefix: "😌"
+    suffix: "…just vibin'."
+  snarky:
+    prefix: "😏"
+    suffix: "lol."
+  supportive:
+    prefix: "💖"
+    suffix: "You've got this."

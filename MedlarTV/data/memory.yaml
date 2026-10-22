@@ -1,0 +1,7 @@
+personality_memory:
+  last_update: 1763009114
+  mood_weights:
+    chill: 5
+    hype: 9
+    snarky: 11
+    supportive: 13
