@@ -12,7 +12,7 @@ Inclusion in this document does not claim that Medlar currently has a capability
 authorize autonomous action, authorize access to devices or data, or select a
 specific implementation technology.
 
-The separate Future connection posabilities inventory is intentionally not
+The separate Future connection possibilities inventory is intentionally not
 included in this file. It remains in its reference chat.
 
 
@@ -735,6 +735,15 @@ Library ID: libfile_1495dec32c808191be55e774675e777d
 Backing file ID: file_00000000e4d0820c8bbd87ce5690f04e
 Recorded size: 6,887 bytes
 Recorded upload time: October 1, 2026 at 17:51 UTC
+
+The review found `Medlar Avatar Maybe.txt` only in the read-only
+`DO_NOT_EDIT_FILES` snapshot. It did not find `Medlar starter(2).txt`, the
+separate Future connection possibilities inventory, or the earlier
+`Medlar starter.txt` copy in the reviewed project folders; the latter is
+identified above as preserved in the reference chat. These are missing source
+comparisons, not specific omissions confirmed in this combined reference.
+Without the original text of those materials, completeness and any omitted
+points cannot be verified.
 
 The original sources remain unchanged. This combined reference preserves their
 substantive vision and avatar specification without asserting that the described

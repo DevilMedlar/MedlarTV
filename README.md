@@ -38,7 +38,7 @@ python -m venv .libretranslate\.venv
 
 Twitch Start launches this service at `LIBRETRANSLATE_URL` (default `http://127.0.0.1:5000/translate`) and Twitch Stop shuts down only the child it launched. It reuses an already running LibreTranslate at that port without taking ownership. The launcher also supports an existing `C:/LibreTranslate` install, or a custom `LIBRETRANSLATE_HOME` and `LIBRETRANSLATE_PYTHON`. LibreTranslate pins an older `requests` release, so do not install it in MedlarTV's main `.venv`.
 
-The Python install does **not** include language models. By default, LibreTranslate downloads all available models when it first starts. The current upstream index has 100 pairs totaling about 8.37 GiB compressed, with more disk needed after extraction; first startup can take a long time. To limit the initial model set, set `LIBRETRANSLATE_LANGUAGES` to comma-separated codes such as `en,es` before Twitch Start. If a model download was interrupted, set `LIBRETRANSLATE_UPDATE_MODELS=true` for one startup to fetch missing pairs, then unset it. `!tlang` lists only languages the running server actually supports. Until `/languages` is ready, translation commands report that the translator is offline.
+The Python install does **not** include language models. By default, LibreTranslate downloads all available models when it first starts. The model set and download size can change over time, and extracted models need additional disk space; first startup can take a long time. To limit the initial model set, set `LIBRETRANSLATE_LANGUAGES` to comma-separated codes such as `en,es` before Twitch Start. If a model download was interrupted, set `LIBRETRANSLATE_UPDATE_MODELS=true` for one startup to fetch missing pairs, then unset it. `!tlang` lists only languages the running server actually supports. Until `/languages` is ready, translation commands report that the translator is offline.
 
 ## Avatar Bridge
 
@@ -153,7 +153,7 @@ The Python install does **not** include language models. By default, LibreTransl
 - Interaction logs in `logs/` directory (JSONL files).
 - Toggle logging via `ENABLE_INTERACTION_LOGGING` env var.
 - Health checks: `!status` reports bounded readiness evidence, including skipped or unverified checks.
-- Diagnostics default to static source/safe-config inspection. Saving requires an explicit local destination. Full private capture additionally requires explicit opt-in and a sensitive-output warning; it is not the default.
+- `tests/medlar_diagnostics.py` is an owner-facing verification tool for checking which effective Twitch credentials and application keys are selected and what each diagnostic check reports. Its default run performs local, loopback, and live Twitch checks and writes exact effective credentials plus complete HTTP request/response evidence to the ignored `logs/medlar_diagnostics.txt`. Checks may be skipped or unavailable when Medlar or Twitch services are offline, so review each check's status and detail rather than treating an incomplete run as proof of a bad key or a healthy system. The exact values and raw evidence make the report sensitive; keep it local and do not commit or share it. `--offline` is explicitly incomplete, and the runner has no static or shareable-report mode.
 
 ## Environment Reference (Common)
 - `MEDLARTV_TWITCH_TOKEN`, `TWITCH_NICK`, `TWITCH_CHANNEL`, `APP_TWITCH_CLIENT_ID`.
